@@ -2,13 +2,37 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>AngularIntro</title>
+  <title>Angular Intro</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      min-height: 100%;
+      display:flex;
+      flex-direction: column;
+  }
+    .content {
+      flex: 1;
+    }
+    .footer {
+      font-size: smaller;
+    }
+  </style>
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <div class="content">
+    <h1>Management Portal</h1>
+    <app-root>Loading...</app-root>
+  </div>
+  <footer class="footer">
+  <hr/>
+  <p>&copy;2016 Software-Projects bvba</p>
+</footer>
 </body>
 </html>

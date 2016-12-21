@@ -1,3 +1,11 @@
-<h1>
-  {{title}}
-</h1>
+  <h1>
+    {{title}}
+  </h1>
+  <nav>
+    <ul>
+      <li *ngFor="let section of sections">
+        <a routerLink="{{section.link}}" routerLinkActive="active-section">{{section.name}}</a>
+      </li>
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>
