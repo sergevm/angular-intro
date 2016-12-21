@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
 import { ProjectsModule } from './projects/projects.module';
 
+import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { ProjectsComponent } from './projects/projects.component';
 
