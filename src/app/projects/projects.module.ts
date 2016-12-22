@@ -8,7 +8,7 @@ import { ProjectDetailComponent } from './project-detail.component';
 import { ProjectDataService} from './../services/project-data-service';
 
 let moduleRoutes: Routes = [
-    {path: 'projects/project/:id', component: ProjectDetailComponent}
+    {path: 'projects/project/:id', component: ProjectDetailComponent, data: {title: 'Project Detail'}}
 ];
 
 @NgModule({

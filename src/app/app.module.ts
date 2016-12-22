@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -10,10 +10,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { ProjectsComponent } from './projects/projects.component';
 
+import { RouteTitleService } from './services/route-title-service';
+
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'projects', component: ProjectsComponent},
+  {path: 'home', component: HomeComponent, data: {title: 'Home'}},
+  {path: 'projects', component: ProjectsComponent, data: {title: 'Project List'}},
   {path: 'invoices', component: ProjectsComponent}
 ];
 @NgModule({
@@ -28,7 +30,7 @@ const appRoutes: Routes = [
     ProjectsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [RouteTitleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

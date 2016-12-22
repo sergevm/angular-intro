@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Section } from './models/sections.interface';
+import { RouteTitleService } from './services/route-title-service';
 
 @Component({
     template: `
@@ -15,7 +17,7 @@ import { Section } from './models/sections.interface';
 export class HomeComponent implements OnInit {
   sections: Section[];
 
-  constructor() {
+  constructor(private titleService: RouteTitleService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -23,5 +25,7 @@ export class HomeComponent implements OnInit {
       {name: 'Projects', link: '/projects', background: 'lightgray' },
       {name: 'Invoices', link: '/invoices', background: 'darkgray' }
     ];
+
+    this.titleService.observe(this.activatedRoute);
   }
 }

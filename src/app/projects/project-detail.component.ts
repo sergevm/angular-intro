@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd, Params } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { Project } from './../models/projects.interface';
 import { ProjectDataService } from './../services/project-data-service';
+import { RouteTitleService } from './../services/route-title-service';
 
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 
 @Component({
     template: `<div>Project: {{project?.name}}</div>`
@@ -12,11 +17,14 @@ export class ProjectDetailComponent implements OnInit {
 
     project: Project;
 
-    constructor(private route: ActivatedRoute, private projectDataService: ProjectDataService) {}
+    constructor(private route: ActivatedRoute, private titleService: RouteTitleService, private projectDataService: ProjectDataService) {}
 
     ngOnInit() {
-        const projectId = this.route.params
+        this.route.params
             .switchMap((params: Params) => this.projectDataService.get(+params['id']))
-            .subscribe((project: Project) => this.project = project);
+            .subscribe((project: Project) => {
+                this.project = project;
+                this.titleService.observe(this.route, this.project.id.toString());
+            });
     }
 }

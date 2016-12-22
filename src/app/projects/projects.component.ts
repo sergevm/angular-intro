@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Project } from '../models/projects.interface';
 import { ProjectDataService } from './../services/project-data-service';
+import { RouteTitleService } from './../services/route-title-service';
 
 @Component({
     selector: 'project-list',
@@ -11,10 +12,11 @@ import { ProjectDataService } from './../services/project-data-service';
 export class ProjectsComponent implements OnInit {
     projects: Project[];
 
-    constructor(private router: Router, private projectDataService: ProjectDataService) {
+    constructor(private router: Router, private activatedRoute: ActivatedRoute, private titleService: RouteTitleService, private projectDataService: ProjectDataService) {
     }
 
     ngOnInit() {
+        this.titleService.observe(this.activatedRoute);
         this.projectDataService.list().then(projects => this.projects = projects);
     }
 
