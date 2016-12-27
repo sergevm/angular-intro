@@ -6,7 +6,7 @@ import { RouteTitleService } from './../services/route-title-service';
 
 @Component({
     selector: 'project-list',
-    templateUrl: './projects.main.html',
+    templateUrl: './project-list.html',
     styles: []
 })
 export class ProjectsComponent implements OnInit {

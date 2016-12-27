@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap'
+
 import { ProjectsModule } from './projects/projects.module';
 
 import { AppComponent } from './app.component';
@@ -28,7 +31,9 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     ProjectsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgbModule.forRoot(),
+    NgbAlertModule
   ],
   providers: [RouteTitleService],
   bootstrap: [AppComponent]

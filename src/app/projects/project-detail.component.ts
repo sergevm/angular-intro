@@ -11,13 +11,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
 @Component({
-    template: `<div>Project: {{project?.name}}</div>`
+    selector: 'project-detail',
+    templateUrl: './project-detail.html'
 })
 export class ProjectDetailComponent implements OnInit {
 
     project: Project;
 
-    constructor(private route: ActivatedRoute, private titleService: RouteTitleService, private projectDataService: ProjectDataService) {}
+    constructor(private route: ActivatedRoute, private router: Router, private titleService: RouteTitleService, private projectDataService: ProjectDataService) {}
 
     ngOnInit() {
         this.route.params
@@ -26,5 +27,9 @@ export class ProjectDetailComponent implements OnInit {
                 this.project = project;
                 this.titleService.observe(this.route, this.project.id.toString());
             });
+    }
+
+    gotoList() {
+        this.router.navigate(['/projects']);
     }
 }
