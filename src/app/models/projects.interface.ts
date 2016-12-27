@@ -1,4 +1,7 @@
+import {Customer} from './customers';
+
 export interface Project {
     id: number,
-    name: string
+    name: string,
+    customer?: Customer
 }
