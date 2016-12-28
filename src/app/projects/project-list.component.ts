@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Project } from '../models/projects.interface';
+import { Project } from '../models/projects';
 import { ProjectDataService } from './../services/project-data-service';
 import { RouteTitleService } from './../services/route-title-service';
 
@@ -22,6 +22,10 @@ export class ProjectsComponent implements OnInit {
 
     detail(event: Event, project: Project) {
         event.preventDefault();
-        this.router.navigate(['projects/project', project.id]);
+        this.router.navigate(['projects', project.id]);
+    }
+
+    createProject() {
+        this.router.navigate(['projects/create']);
     }
 }

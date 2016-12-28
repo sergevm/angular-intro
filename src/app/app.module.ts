@@ -11,7 +11,7 @@ import { ProjectsModule } from './projects/projects.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
-import { ProjectsComponent } from './projects/projects.component';
+import { ProjectsComponent } from './projects/project-list.component';
 
 import { RouteTitleService } from './services/route-title-service';
 

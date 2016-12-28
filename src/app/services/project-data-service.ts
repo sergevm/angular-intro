@@ -10,6 +10,14 @@ export class ProjectDataService {
         {id: 2, name: 'Napoleon', customer: new Customer(2, 'Agfa', '333254636')}
     ];
 
-    list():Promise<Project[]> { return Promise.resolve(this.projects); }
+    list(): Promise<Project[]> { return Promise.resolve(this.projects); }
+
+    create(project: Project): Promise<Project> { 
+        // Determine the id of the created project, based on the highest existing id
+        project.id = Math.max(...this.projects.map(project => project.id)) + 1;
+        this.projects.push(project);
+        return Promise.resolve(project);
+    };
+
     get(id: number): Promise<Project> { return Promise.resolve(this.projects.find((project) => project.id === id))}
 }

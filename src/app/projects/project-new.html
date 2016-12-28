@@ -1,0 +1,30 @@
+<button class="btn btn-default" (click)="cancel()">Cancel</button>
+<section class="section">
+    <form #form="ngForm" (ngSubmit)="submit(form)">
+        <fieldset ngModelGroup="project">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <!-- Working around this issue: https://github.com/angular/angular/issues/7697 -->
+                <input type="text" class="form-control" name="name"  #projectName="ngModel"
+                    [(ngModel)]="project && project.name" required minLength="3"/>
+            </div>
+            <div *ngIf="projectName.hasError('required')" class="error">
+                Project name is required
+            </div>
+            <!-- This validation is not working correctly at the moment. Inspect the classes to verify -->
+            <div *ngIf="projectName.hasError('minlength')" class="error">
+                Project name should be at least 3 characters
+            </div>            
+            <fieldset ngModelGroup="customer">
+                <div class="form-group">
+                    <label for="customer">Customer</label>
+                    <select [(ngModel)]="project.customer" name="customer">
+                        <!-- Note that to bind to the object, we need to use ngValue instead of value -->
+                        <option *ngFor="let c of customers" [selected]="isSelectedCustomer(c)" [ngValue]="c">{{c.name}}</option>
+                    </select>
+                </div>
+            </fieldset>
+        </fieldset>
+        <button class="btn btn-default" type="submit">Save</button>
+    </form>
+</section>
