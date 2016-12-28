@@ -17,6 +17,7 @@ import 'rxjs/add/operator/mergeMap';
 export class ProjectDetailComponent implements OnInit {
 
     project: Project;
+    editing: boolean = false;
 
     constructor(private route: ActivatedRoute, private router: Router, private titleService: RouteTitleService, private projectDataService: ProjectDataService) {}
 
@@ -31,5 +32,13 @@ export class ProjectDetailComponent implements OnInit {
 
     gotoList() {
         this.router.navigate(['/projects']);
+    }
+
+    edit() {
+        this.editing = true;
+    }
+
+    cancelEdit() {
+        this.editing = false;
     }
 }

@@ -1,15 +1,16 @@
 <button class="btn btn-default" (click)="gotoList()">Back to Project List</button>
-<button class="btn btn-default" (click)="edit(project)">Edit</button>
+<button class="btn btn-default" *ngIf="!editing" (click)="edit()">Edit</button>
+<button class="btn btn-default" *ngIf="editing" (click)="cancelEdit()">Cancel</button>
 <section class="section">
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" disabled value="{{project?.name}}"/>
+        <input type="text" class="form-control" [disabled]="!editing" value="{{project?.name}}"/>
     </div>
     <div class="form-group">
         <label for="customer">Customer</label>
-        <input type="text" class="form-control" disabled value="{{project?.customer.name}}">
+        <input type="text" class="form-control" [disabled]="!editing" value="{{project?.customer.name}}">
     </div>
     <div class="form-group" *ngIf="project?.customer.contact">
         <label for="contact">Contact</label>
-        <input type="text" class="form-control" disabled value={{project?.customer.contact.fullName}}></div>
+        <input type="text" class="form-control" [disabled]="!editing" value={{project?.customer.contact.fullName}}></div>
 </section>
